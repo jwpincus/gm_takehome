@@ -5,10 +5,11 @@ class UserTest < Minitest::Test
 
     def test_it_exists
         set_user
-        Assert @user
+        assert @user
     end
 
     def test_user_has_required_attributes
+        set_user
         assert_equal 'Male', @user.sex
         assert_equal 'Adult', @user.age
         assert_equal 'French', @user.nationality
