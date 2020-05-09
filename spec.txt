@@ -42,4 +42,8 @@ Users class
 
     Holds users
 
-    can filter
+    indexes users into sets
+
+Task
+    contains desired demographic information
+    returns TaskGroups of users split into desired groups
