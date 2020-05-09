@@ -33,3 +33,13 @@ Write the Ruby classes to represent the above domain objects.
 Write the unit test against which you will test your algorithm, using the above example as mock data.
 Write the algorithm to implement the above task distribution business logic.
 Make sure your test passes. You don’t need to code very thorough pass checks. It’s enough to do a couple of spot checks, and the rest we can verify visually by printing the output.
+
+
+User class:
+    simply a holder for sets of attributes
+
+Users class
+
+    Holds users
+
+    can filter
