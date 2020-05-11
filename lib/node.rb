@@ -17,9 +17,11 @@ class Node
     end
   end
 
-  def create_children(new_values)
+  def create_split(new_values)
     if !@children.empty?
-      @children.map { |child| child.create_children(new_values) }.reduce({}, :merge)
+      @children.map do |child|
+        child.create_split(new_values)
+      end.reduce({}, :merge)
     else
       @children = new_values.map do |demo_key, percentage|
         Node.new(demo_key, percentage, self)

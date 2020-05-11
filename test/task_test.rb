@@ -1,20 +1,15 @@
 require './lib/user'
-require './lib/users'
 require './lib/task'
 require 'minitest/autorun'
 
 class TaskTest < Minitest::Test
   def setup
-    @users_set = []
-    1000.times do
-      @users_set << User.new(
+    10_000.times do
+      User.new(
         sex: %w[Male Female].shuffle.pop,
         age: %w[Adult Child].shuffle.pop,
-        nationality: %w[English French Indian Japanese].shuffle.pop
-      )
+        nationality: %w[English French Indian Japanese].shuffle.pop)
     end
-    @users = Users.new
-    @users.add_new_users(@users_set)
   end
 
   def test_it_exists
@@ -23,8 +18,8 @@ class TaskTest < Minitest::Test
 
   def test_task_accepts_user_count
     task = Task.new
-    task.users = @users
-    assert_equal @users, task.users
+    task.user_count = 100
+    assert_equal 100, task.user_count
   end
 
   def test_it_can_set_task_demographics
@@ -48,7 +43,6 @@ class TaskTest < Minitest::Test
   def test_it_can_get_appropriate_users
     task = Task.new
     task.user_count = 100
-    task.users = @users
 
     task.add_demographic_split({ 'Male' => 0.5, 'Female' => 0.5 })
     assert_equal 50, task.split_users[['Male']].length
@@ -63,5 +57,10 @@ class TaskTest < Minitest::Test
         'Japanese' => 0.25 
         })
     assert_equal 5, task.split_users[%w[Male Child French]].length
+    assert_equal 16, task.split_users.length
+  end
+
+  def teardown
+    User.delete_all
   end
 end
