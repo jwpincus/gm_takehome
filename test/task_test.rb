@@ -49,10 +49,13 @@ class TaskTest < Minitest::Test
     task = Task.new
     task.user_count = 100
     task.users = @users
+
     task.add_demographic_split({ 'Male' => 0.5, 'Female' => 0.5 })
     assert_equal 50, task.split_users[['Male']].length
+
     task.add_demographic_split({ 'Child' => 0.4, 'Adult' => 0.6 })
     assert_equal 20, task.split_users[%w[Male Child]].length
+
     task.add_demographic_split({
         'English' => 0.25,
         'French' => 0.25,
