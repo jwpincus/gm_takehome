@@ -27,8 +27,8 @@ class Node
         Node.new(demo_key, percentage, self)
       end
       @children.map do |child|
-        { child.keys => child.percentage }
-      end.reduce({}, :merge)
+        [ child.keys, child.percentage ]
+      end.to_h
     end
   end
 end

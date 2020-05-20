@@ -38,6 +38,7 @@ class TaskTest < Minitest::Test
         'Japanese' => 0.25 
         })
     assert_equal 0.05, task.demographic_groups[%w[Male Child French]]
+    puts task.demographic_groups
   end
 
   def test_it_can_get_appropriate_users

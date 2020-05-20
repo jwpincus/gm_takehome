@@ -21,7 +21,7 @@ class Task
   end
 
   def split_users
-    return @users unless @demographic_groups
+    return users unless @demographic_groups
 
     splits = {}
     @demographic_groups.each do |keys, percentage|
